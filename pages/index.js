@@ -1,13 +1,21 @@
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import Head from 'next/head';
+import htmlContent from '../public/index.html';
 
 export default function Home() {
-  const router = useRouter();
-
   useEffect(() => {
-    // Redirect to the static HTML file
-    router.push('/index.html');
+    // Import Bootstrap JS after component mounts
+    import('bootstrap/dist/js/bootstrap.bundle.min.js');
   }, []);
 
-  return null;
+  return (
+    <>
+      <Head>
+        <title>Hawaii Elite Real Estate - Find Your Perfect Property</title>
+        <meta name="description" content="Find your perfect property in Hawaii with Hawaii Elite Real Estate. We specialize in luxury properties, oceanfront homes, and more across all Hawaiian islands." />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+    </>
+  );
 }
