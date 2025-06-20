@@ -294,8 +294,9 @@
         .property-type-card, .island-card {
             position: relative;
             cursor: pointer;
-            margin-bottom: 1.5rem;
             overflow: hidden;
+            display: block;
+            margin-bottom: 1rem;
         }
         
         .property-type-img, .island-img {
@@ -314,10 +315,10 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 1rem;
+            padding: 0.75rem;
             color: white;
             text-align: center;
-            background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.3) 60%, transparent);
+            background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2) 80%, transparent);
         }
 
         .property-type-overlay h3, .island-overlay h3 {
@@ -625,6 +626,15 @@
                         <img src="https://images.unsplash.com/photo-1505852679233-d9fd70aff56d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kauai" class="island-img">
                         <div class="island-overlay">
                             <h3 class="h5 mb-0">Kauai</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="island-card" data-bs-toggle="modal" data-bs-target="#islandModal" data-island="Big Island">
+                        <img src="https://images.unsplash.com/photo-1591308734730-99fd1c9f6ba8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Big Island" class="island-img">
+                        <div class="island-overlay">
+                            <h3 class="h5 mb-0">Big Island</h3>
                         </div>
                     </div>
                 </div>
