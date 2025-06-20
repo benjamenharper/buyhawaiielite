@@ -38,20 +38,22 @@ module.exports = async (req, res) => {
     let to = process.env.NOTIFICATION_EMAIL;
     
     // Handle specific agent routing
-    if (formData.agent === 'ben') {
+    if (req.body.agent === 'ben') {
       to = 'benjamen.harper@gmail.com';
-    } else if (formData.agent === 'brandon') {
+    } else if (req.body.agent === 'brandon') {
       to = 'brandon@hawaiieliterealestate.com';
     }
 
     switch (formType) {
       case 'contact':
-        subject = `New Contact Form Submission - ${interest}`;
+        subject = `New Contact Form Submission - ${interest}${req.body.agent ? ` (via ${req.body.agent === 'ben' ? 'Ben Harper' : 'Brandon Smith'})` : ''}`;
         text = `
           Name: ${name}
           Email: ${email}
           Phone: ${phone}
           Interest: ${interest}
+          ${message ? `Message: ${message}` : ''}
+          ${req.body.agent ? `Contacted via: ${req.body.agent === 'ben' ? 'Ben Harper' : 'Brandon Smith'}` : ''}
         `;
         break;
       case 'property':
