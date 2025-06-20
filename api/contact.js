@@ -32,9 +32,17 @@ module.exports = async (req, res) => {
   try {
     const { name, email, phone, interest, propertyAddress, propertyPrice, message, formType } = req.body;
 
-    // Create email content based on form type
+    // Create email content based on form type and agent
     let subject = '';
     let text = '';
+    let to = process.env.NOTIFICATION_EMAIL;
+    
+    // Handle specific agent routing
+    if (formData.agent === 'ben') {
+      to = 'benjamen.harper@gmail.com';
+    } else if (formData.agent === 'brandon') {
+      to = 'brandon@hawaiieliterealestate.com';
+    }
 
     switch (formType) {
       case 'contact':
@@ -71,7 +79,7 @@ module.exports = async (req, res) => {
     
     const result = await resend.emails.send({
       from: 'Hawaii Elite Real Estate <forms@hawaiieliterealestate.com>',
-      to: process.env.NOTIFICATION_EMAIL,
+      to: to,
       subject,
       text,
       reply_to: email
