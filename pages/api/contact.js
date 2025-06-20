@@ -1,4 +1,6 @@
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -38,23 +40,13 @@ export default async function handler(req, res) {
         text = JSON.stringify(req.body, null, 2);
     }
 
-    // Create Nodemailer transporter
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      secure: true,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
-
-    // Send email
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM,
+    // Send email using Resend
+    await resend.emails.send({
+      from: 'Hawaii Elite Real Estate <forms@hawaiieliterealestate.com>',
       to: process.env.NOTIFICATION_EMAIL,
       subject,
       text,
+      reply_to: email
     });
 
     res.status(200).json({ message: 'Form submitted successfully' });
