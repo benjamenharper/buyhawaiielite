@@ -291,14 +291,22 @@
             box-shadow: 0 10px 25px rgba(var(--shadow-color-rgb), 0.15);
         }
         
+        .property-type-card, .island-card {
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        
         .property-type-img, .island-img {
-            height: 200px; /* property-type-img */
+            height: 200px;
             object-fit: cover;
             width: 100%;
+            display: block;
         }
 
         .island-img {
-            height: 150px; /* Specific for island-img */
+            height: 150px;
         }
         
         .property-type-overlay, .island-overlay {
@@ -309,12 +317,18 @@
             padding: 1rem;
             color: white;
             text-align: center;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.3) 60%, transparent);
         }
 
-        .island-overlay {
-            padding: 1.5rem 1rem 1rem; /* Specific for island-overlay */
-            text-align: center;
+        .property-type-overlay h3, .island-overlay h3 {
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .property-type-overlay p {
+            margin: 0.25rem 0 0 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
         
         .modal-content {
