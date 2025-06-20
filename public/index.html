@@ -191,6 +191,27 @@
             font-family: 'Playfair Display', serif;
         }
 
+        .agent-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .agent-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .agent-photo {
+            border: 3px solid var(--primary);
+            transition: border-color 0.2s;
+        }
+
+        .agent-card:hover .agent-photo {
+            border-color: var(--accent);
+        }
+
         .feature-list {
             list-style: none;
             padding-left: 0;
@@ -704,6 +725,24 @@
                 <div class="col-lg-8 text-center">
                     <div class="brokerage-info p-4 rounded">
                         <img src="https://hawaiieliterealestate.com/wp-content/uploads/2025/06/hawaiieliterealestate_cropped.png" alt="Hawaii Elite Real Estate" class="broker-logo img-fluid mb-3">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-md-6 mb-4 mb-md-0">
+                                <div class="agent-card text-center">
+                                    <img src="ben.jpg" alt="Ben Harper" class="agent-photo rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                                    <h4 class="h5 mb-2">Ben Harper</h4>
+                                    <p class="small mb-3">Principal Broker<br>RB-23170</p>
+                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contact-form-modal" onclick="setContactAgent('ben')">Contact Ben</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="agent-card text-center">
+                                    <img src="brandon.jpg" alt="Brandon Smith" class="agent-photo rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                                    <h4 class="h5 mb-2">Brandon Smith</h4>
+                                    <p class="small mb-3">Realtor Associate<br>RS-82328</p>
+                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contact-form-modal" onclick="setContactAgent('brandon')">Contact Brandon</button>
+                                </div>
+                            </div>
+                        </div>
                         <p class="small mb-2">Brokered by Pacific Image Properties<br>License #RB-23170</p>
                         <p class="small mb-2"><strong>Principal Office:</strong><br>1888 Kalakaua Ave C312<br>Honolulu, HI 96815</p>
                         <p class="small mb-0"><strong>Branch Office:</strong><br>16 S. Market St 2M<br>Wailuku, HI 96793</p>
@@ -935,6 +974,44 @@
         </div>
     </div>
     
+    <!-- Contact Form Modal -->
+    <div class="modal fade" id="contact-form-modal" tabindex="-1" aria-labelledby="contactFormModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactFormModalLabel">Contact Agent</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="agent-contact-form">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="tel" class="form-control" placeholder="Your Phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select" required>
+                                <option value="" selected disabled>What are you interested in?</option>
+                                <option value="buying">Buying a Property</option>
+                                <option value="selling">Selling a Property</option>
+                                <option value="investing">Real Estate Investment</option>
+                                <option value="information">General Information</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="3" placeholder="Additional Details (optional)"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         async function submitForm(formData, formType) {
