@@ -1,5 +1,6 @@
 const { Resend } = require('resend');
 
+console.log('Initializing Resend with API key:', process.env.RESEND_API_KEY ? 'Present (length: ' + process.env.RESEND_API_KEY.length + ')' : 'Missing');
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 module.exports = async (req, res) => {
@@ -62,7 +63,13 @@ module.exports = async (req, res) => {
     }
 
     // Send email using Resend
-    await resend.emails.send({
+    console.log('Attempting to send email with:', {
+      to: process.env.NOTIFICATION_EMAIL,
+      subject,
+      hasReplyTo: !!email
+    });
+    
+    const result = await resend.emails.send({
       from: 'Hawaii Elite Real Estate <forms@hawaiieliterealestate.com>',
       to: process.env.NOTIFICATION_EMAIL,
       subject,
@@ -70,7 +77,8 @@ module.exports = async (req, res) => {
       reply_to: email
     });
 
-    res.status(200).json({ message: 'Form submitted successfully' });
+    console.log('Email sent successfully:', result);
+    res.status(200).json({ message: 'Form submitted successfully', result });
   } catch (error) {
     console.error('Form submission error:', {
       error: error,
