@@ -939,15 +939,26 @@
     <script>
         async function submitForm(formData, formType) {
             try {
+                console.log('Submitting form data:', { ...formData, formType });
+                
                 const response = await fetch('/api/contact.js', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
                     body: JSON.stringify({ ...formData, formType }),
                 });
 
-                const data = await response.json();
+                let data;
+                const contentType = response.headers.get('content-type');
+                if (contentType && contentType.includes('application/json')) {
+                    data = await response.json();
+                } else {
+                    const text = await response.text();
+                    console.error('Non-JSON response:', text);
+                    throw new Error('Invalid response from server');
+                }
 
                 if (!response.ok) {
                     throw new Error(data.error || data.message || 'Form submission failed');
@@ -956,7 +967,7 @@
                 return true;
             } catch (error) {
                 console.error('Error submitting form:', error);
-                alert('Error: ' + error.message);
+                alert('Error submitting form: ' + error.message);
                 return false;
             }
         }

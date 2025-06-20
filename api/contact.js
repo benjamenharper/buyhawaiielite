@@ -3,6 +3,15 @@ const { Resend } = require('resend');
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 module.exports = async (req, res) => {
+  console.log('API Request received:', {
+    method: req.method,
+    headers: req.headers,
+    body: req.body,
+    env: {
+      RESEND_API_KEY: process.env.RESEND_API_KEY ? 'Set' : 'Not set',
+      NOTIFICATION_EMAIL: process.env.NOTIFICATION_EMAIL ? 'Set' : 'Not set'
+    }
+  });
   // Enable CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -63,12 +72,20 @@ module.exports = async (req, res) => {
 
     res.status(200).json({ message: 'Form submitted successfully' });
   } catch (error) {
-    console.error('Form submission error:', error);
-    console.error('API Key:', process.env.RESEND_API_KEY ? 'Present' : 'Missing');
-    console.error('Notification Email:', process.env.NOTIFICATION_EMAIL ? 'Present' : 'Missing');
+    console.error('Form submission error:', {
+      error: error,
+      message: error.message,
+      stack: error.stack,
+      code: error.code,
+      response: error.response?.data || error.response,
+      env: {
+        RESEND_API_KEY: process.env.RESEND_API_KEY ? 'Set' : 'Not set',
+        NOTIFICATION_EMAIL: process.env.NOTIFICATION_EMAIL ? 'Set' : 'Not set'
+      }
+    });
     res.status(500).json({ 
       message: 'Error submitting form',
-      error: error.message || 'Unknown error'
+      error: `${error.message} (Code: ${error.code || 'none'})`
     });
   }
 };
