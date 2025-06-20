@@ -1,8 +1,8 @@
-import { Resend } from 'resend';
+const { Resend } = require('resend');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
   }
@@ -54,4 +54,4 @@ export default async function handler(req, res) {
     console.error('Form submission error:', error);
     res.status(500).json({ message: 'Error submitting form' });
   }
-}
+};

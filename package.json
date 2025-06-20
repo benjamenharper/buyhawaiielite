@@ -3,15 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "serve public",
+    "build": "echo 'No build needed'",
+    "start": "serve public"
   },
   "dependencies": {
-    "bootstrap": "^5.3.0",
-    "next": "^13.4.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "serve": "^14.2.0",
     "resend": "^0.15.3"
   },
   "devDependencies": {
