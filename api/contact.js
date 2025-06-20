@@ -37,11 +37,9 @@ module.exports = async (req, res) => {
     let text = '';
     let to = process.env.NOTIFICATION_EMAIL;
     
-    // Handle specific agent routing
-    if (req.body.agent === 'ben') {
+    // All agent contacts go to Ben's email
+    if (req.body.agent) {
       to = 'benjamen.harper@gmail.com';
-    } else if (req.body.agent === 'brandon') {
-      to = 'brandon@hawaiieliterealestate.com';
     }
 
     switch (formType) {
