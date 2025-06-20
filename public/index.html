@@ -937,12 +937,46 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Form submission handler
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
+        async function submitForm(formData, formType) {
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ ...formData, formType }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Form submission failed');
+                }
+
+                return true;
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                return false;
+            }
+        }
+
+        // Main contact form submission
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
             e.preventDefault();
-            alert('Thank you for your interest! A Hawaii Buyers Agent will contact you shortly to discuss your property needs.');
+            const form = e.target;
+            const formData = {
+                name: form.querySelector('input[type="text"]').value,
+                email: form.querySelector('input[type="email"]').value,
+                phone: form.querySelector('input[type="tel"]').value,
+                interest: form.querySelector('select').value
+            };
+
+            if (await submitForm(formData, 'contact')) {
+                alert('Thank you for your interest! A Hawaii Buyers Agent will contact you shortly to discuss your property needs.');
+                form.reset();
+            } else {
+                alert('There was an error submitting the form. Please try again or contact us directly.');
+            }
         });
-        
+
         // Property Type Modal
         const propertyTypeModal = document.getElementById('propertyTypeModal');
         propertyTypeModal.addEventListener('show.bs.modal', function (event) {
@@ -954,7 +988,31 @@
             modalTitle.textContent = propertyType === 'All Properties' ? 'Find Your Perfect Property' : 'Find Your Perfect ' + propertyType;
             selectedPropertyType.value = propertyType;
         });
-        
+
+        // Property Type Form Submission
+        document.querySelector('.property-type-submit').addEventListener('click', async function() {
+            const form = document.getElementById('property-type-form');
+            if (form.checkValidity()) {
+                const formData = {
+                    name: form.querySelector('input[type="text"]').value,
+                    email: form.querySelector('input[type="email"]').value,
+                    phone: form.querySelector('input[type="tel"]').value,
+                    interest: document.getElementById('selected-property-type').value
+                };
+
+                if (await submitForm(formData, 'contact')) {
+                    alert('Thank you for your interest in ' + formData.interest + '! A Hawaii Buyers Agent will contact you shortly with property recommendations.');
+                    form.reset();
+                    const modal = bootstrap.Modal.getInstance(propertyTypeModal);
+                    modal.hide();
+                } else {
+                    alert('There was an error submitting the form. Please try again or contact us directly.');
+                }
+            } else {
+                form.reportValidity();
+            }
+        });
+
         // Island Modal
         const islandModal = document.getElementById('islandModal');
         islandModal.addEventListener('show.bs.modal', function (event) {
@@ -968,31 +1026,31 @@
             selectedIsland.value = island;
             selectedIslandText.textContent = island;
         });
-        
-        // Property Type Form Submission
-        document.querySelector('.property-type-submit').addEventListener('click', function() {
-            const form = document.getElementById('property-type-form');
-            if (form.checkValidity()) {
-                alert('Thank you for your interest in ' + document.getElementById('selected-property-type').value + '! A Hawaii Buyers Agent will contact you shortly with property recommendations.');
-                const modal = bootstrap.Modal.getInstance(propertyTypeModal);
-                modal.hide();
-            } else {
-                form.reportValidity();
-            }
-        });
-        
+
         // Island Form Submission
-        document.querySelector('.island-submit').addEventListener('click', function() {
+        document.querySelector('.island-submit').addEventListener('click', async function() {
             const form = document.getElementById('island-form');
             if (form.checkValidity()) {
-                alert('Thank you for your interest in ' + document.getElementById('selected-island').value + ' properties! Our Hawaii Buyers Agent will contact you shortly.');
-                const modal = bootstrap.Modal.getInstance(islandModal);
-                modal.hide();
+                const formData = {
+                    name: form.querySelector('input[type="text"]').value,
+                    email: form.querySelector('input[type="email"]').value,
+                    phone: form.querySelector('input[type="tel"]').value,
+                    interest: document.getElementById('selected-island').value + ' properties'
+                };
+
+                if (await submitForm(formData, 'contact')) {
+                    alert('Thank you for your interest in ' + formData.interest + '! Our Hawaii Buyers Agent will contact you shortly.');
+                    form.reset();
+                    const modal = bootstrap.Modal.getInstance(islandModal);
+                    modal.hide();
+                } else {
+                    alert('There was an error submitting the form. Please try again or contact us directly.');
+                }
             } else {
                 form.reportValidity();
             }
         });
-        
+
         // For Sale Modal
         const forSaleModal = document.getElementById('forSaleModal');
         forSaleModal.addEventListener('show.bs.modal', function (event) {
@@ -1009,16 +1067,28 @@
             selectedPropertyAddressInput.value = propertyAddress;
             selectedPropertyPriceInput.value = propertyPrice;
         });
-        
+
         // For Sale Form Submission
-        document.querySelector('.for-sale-submit').addEventListener('click', function() {
+        document.querySelector('.for-sale-submit').addEventListener('click', async function() {
             const form = document.getElementById('for-sale-form');
             if (form.checkValidity()) {
-                const address = document.getElementById('selected-property-address-input').value;
-                const price = document.getElementById('selected-property-price-input').value;
-                alert('Thank you for your interest in the property at ' + address + ' (' + price + '). A Hawaii Buyers Agent will contact you shortly to discuss next steps.');
-                const modal = bootstrap.Modal.getInstance(forSaleModal);
-                modal.hide();
+                const formData = {
+                    name: form.querySelector('input[type="text"]').value,
+                    email: form.querySelector('input[type="email"]').value,
+                    phone: form.querySelector('input[type="tel"]').value,
+                    propertyAddress: document.getElementById('selected-property-address-input').value,
+                    propertyPrice: document.getElementById('selected-property-price-input').value,
+                    message: form.querySelector('textarea').value
+                };
+
+                if (await submitForm(formData, 'property')) {
+                    alert('Thank you for your interest in the property at ' + formData.propertyAddress + ' (' + formData.propertyPrice + '). A Hawaii Buyers Agent will contact you shortly to discuss next steps.');
+                    form.reset();
+                    const modal = bootstrap.Modal.getInstance(forSaleModal);
+                    modal.hide();
+                } else {
+                    alert('There was an error submitting the form. Please try again or contact us directly.');
+                }
             } else {
                 form.reportValidity();
             }
