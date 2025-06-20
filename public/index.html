@@ -947,13 +947,16 @@
                     body: JSON.stringify({ ...formData, formType }),
                 });
 
+                const data = await response.json();
+
                 if (!response.ok) {
-                    throw new Error('Form submission failed');
+                    throw new Error(data.error || data.message || 'Form submission failed');
                 }
 
                 return true;
             } catch (error) {
                 console.error('Error submitting form:', error);
+                alert('Error: ' + error.message);
                 return false;
             }
         }
