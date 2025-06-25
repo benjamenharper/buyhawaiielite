@@ -85,7 +85,7 @@
         }
 
         .hero-section {
-            background: url('https://images.unsplash.com/photo-1542292714-0af72998e1e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+            background: url('https://images.unsplash.com/photo-1505852679233-d9fd70aff56d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center;
             background-size: cover;
             color: #ffffff;
             padding: 6rem 0;
@@ -624,63 +624,33 @@
         <div class="container">
             <h2 class="text-center mb-5">Explore Molokai <span class="gold-text">Property Types</span></h2>
             
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="property-type-card" data-bs-toggle="modal" data-bs-target="#propertyTypeModal" data-type="Oceanfront Homes">
-                        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811" alt="Oceanfront Homes" class="card-img">
+                    <div class="property-type-card" data-bs-toggle="modal" data-bs-target="#propertyTypeModal" data-type="Residential">
+                        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399" alt="Residential Properties" class="card-img">
                         <div class="card-overlay">
-                            <h3>Oceanfront Homes</h3>
-                            <p>Beautiful homes with stunning ocean views</p>
+                            <h3>Residential</h3>
+                            <p>Traditional homes and properties</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="property-type-card" data-bs-toggle="modal" data-bs-target="#propertyTypeModal" data-type="Ranch Properties">
-                        <img src="https://images.unsplash.com/photo-1623718649591-311775a30c43" alt="Ranch Properties" class="card-img">
+                    <div class="property-type-card" data-bs-toggle="modal" data-bs-target="#propertyTypeModal" data-type="Agricultural">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef" alt="Agricultural Properties" class="card-img">
                         <div class="card-overlay">
-                            <h3>Ranch Properties</h3>
-                            <p>Expansive ranches with agricultural potential</p>
+                            <h3>Agricultural</h3>
+                            <p>Ranch and farming properties</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="property-type-card" data-bs-toggle="modal" data-bs-target="#propertyTypeModal" data-type="Valley Homes">
-                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914" alt="Valley Homes" class="card-img">
+                    <div class="property-type-card" data-bs-toggle="modal" data-bs-target="#propertyTypeModal" data-type="Oceanfront">
+                        <img src="https://images.unsplash.com/photo-1505852679233-d9fd70aff56d" alt="Oceanfront Properties" class="card-img">
                         <div class="card-overlay">
-                            <h3>Valley Homes</h3>
-                            <p>Peaceful properties in historic valleys</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="property-type-card" data-bs-toggle="modal" data-bs-target="#propertyTypeModal" data-type="Traditional Homes">
-                        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399" alt="Traditional Homes" class="card-img">
-                        <div class="card-overlay">
-                            <h3>Traditional Homes</h3>
-                            <p>Authentic Hawaiian-style residences</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="property-type-card" data-bs-toggle="modal" data-bs-target="#propertyTypeModal" data-type="Agricultural Land">
-                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef" alt="Agricultural Land" class="card-img">
-                        <div class="card-overlay">
-                            <h3>Agricultural Land</h3>
-                            <p>Fertile land for farming and sustainability</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="property-type-card" data-bs-toggle="modal" data-bs-target="#propertyTypeModal" data-type="Coastal Properties">
-                        <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf" alt="Coastal Properties" class="card-img">
-                        <div class="card-overlay">
-                            <h3>Coastal Properties</h3>
-                            <p>Homes with easy beach and ocean access</p>
+                            <h3>Oceanfront</h3>
+                            <p>Properties with ocean views</p>
                         </div>
                     </div>
                 </div>
@@ -854,11 +824,9 @@
                         <div class="mb-3">
                             <select class="form-select" required>
                                 <option value="" selected disabled>Property Type</option>
-                                <option value="ranch">Ranch Property</option>
-                                <option value="house">Traditional Home</option>
-                                <option value="oceanfront">Oceanfront Property</option>
-                                <option value="agricultural">Agricultural Land</option>
-                                <option value="residential">Residential Land</option>
+                                <option value="residential">Residential</option>
+                                <option value="agricultural">Agricultural</option>
+                                <option value="oceanfront">Oceanfront</option>
                             </select>
                         </div>
                         <div class="mb-3">
