@@ -863,8 +863,7 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         async function submitForm(formData, formType) {
             try {
@@ -1090,10 +1089,22 @@
     <div id="footer-include"></div>
     <script>
         // Load includes using fetch
-        function loadIncludes() {
-            $('#agents-include').load('includes/agents.html');
-            $('#brokerage-include').load('includes/brokerage.html');
-            $('#footer-include').load('includes/footer.html');
+        async function loadIncludes() {
+            const includes = [
+                { id: 'agents-include', path: 'includes/agents.html' },
+                { id: 'brokerage-include', path: 'includes/brokerage.html' },
+                { id: 'footer-include', path: 'includes/footer.html' }
+            ];
+
+            for (const include of includes) {
+                try {
+                    const response = await fetch(include.path);
+                    const content = await response.text();
+                    document.getElementById(include.id).innerHTML = content;
+                } catch (error) {
+                    console.error(`Error loading ${include.path}:`, error);
+                }
+            }
         }
 
         // Load includes when page loads
