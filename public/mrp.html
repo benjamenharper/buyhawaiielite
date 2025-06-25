@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Expert guidance for buying property in Hawaii. Work with experienced local agents who understand the unique aspects of Hawaii real estate.">
-    <meta name="keywords" content="Hawaii real estate, buy property Hawaii, Hawaii homes for sale, Hawaii real estate agents, oceanfront property Hawaii">
+    <meta name="description" content="Military Relocation Professional (MRP) specialists helping service members and veterans buy homes in Hawaii. Expert guidance on VA loans, BAH, and military-specific housing needs.">
+    <meta name="keywords" content="Military housing Hawaii, VA loans Hawaii, BAH Hawaii, Military Relocation Professional, MRP realtor Hawaii, military home buying, PCS Hawaii, Schofield Barracks housing, Pearl Harbor housing, MCBH housing">
     
     <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="Hawaii Elite Real Estate - Expert Local Buyers Agents">
-    <meta property="og:description" content="Expert guidance for buying property in Hawaii. Work with experienced local agents who understand the unique aspects of Hawaii real estate.">
+    <meta property="og:title" content="Hawaii Elite Real Estate - Military Relocation Specialists">
+    <meta property="og:description" content="Military Relocation Professional (MRP) specialists helping service members and veterans buy homes in Hawaii. Expert guidance on VA loans, BAH, and military-specific housing needs.">
     <meta property="og:image" content="/cropped-pin-150x150.png">
-    <meta property="og:url" content="https://buy.hawaiieliterealestate.com">
+    <meta property="og:url" content="https://buy.hawaiieliterealestate.com/mrp">
     <meta property="og:type" content="website">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Hawaii Elite Real Estate - Expert Local Buyers Agents">
-    <meta name="twitter:description" content="Expert guidance for buying property in Hawaii. Work with experienced local agents who understand the unique aspects of Hawaii real estate.">
+    <meta name="twitter:title" content="Hawaii Elite Real Estate - Military Relocation Specialists">
+    <meta name="twitter:description" content="Military Relocation Professional (MRP) specialists helping service members and veterans buy homes in Hawaii. Expert guidance on VA loans, BAH, and military-specific housing needs.">
     <meta name="twitter:image" content="/cropped-pin-150x150.png">
     
     <link rel="icon" type="image/png" href="/cropped-pin-150x150.png">
-    <title>Hawaii Elite Real Estate - Expert Local Buyers Agents</title>
+    <title>Military Relocation Professional (MRP) - Hawaii Elite Real Estate</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -36,8 +36,8 @@
     </script>
     <style>
         :root {
-            --primary: #48cae4; /* Teal */
-            --secondary: #0077b6; /* Blue */
+            --primary: #003087; /* Navy Blue */
+            --secondary: #B71234; /* Military Red */
             --accent: #e76f51; /* Orange */
             --light: #ffffff; /* Main background - White */
             --light-gray: #f8f9fa; /* Light gray for cards or subtle backgrounds */
@@ -46,11 +46,13 @@
             --success: #2a9d8f; /* Green */
             --text: #212529; /* Main text color - same as --dark */
             --text-muted: #6c757d; /* Bootstrap's muted text color */
-            --gold: #d4af37; /* Gold */
+            --gold: #FFB612; /* Military Gold */
             --border-color: #dee2e6; /* Bootstrap's default border color */
             --card-bg: #ffffff; /* Card background */
             --form-bg: #ffffff; /* Form input background */
-            --shadow-color-rgb: 0,0,0; /* For box shadows, adjust opacity */
+            --shadow-color-rgb: 0,0,0; /* For box shadows */
+            --military-blue: #003087; /* Navy Blue */
+            --military-gold: #FFB612; /* Military Gold */
         }
 
         .hawaii-elite-squeeze body,
@@ -86,27 +88,76 @@
         }
 
         .hero-section {
-            background: url('https://images.unsplash.com/photo-1505852679233-d9fd70aff56d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1541919531940-2599f7aa9648?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
-            color: #ffffff;
+            background-position: center;
             padding: 6rem 0;
+            color: var(--light);
             position: relative;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
         }
 
         .hero-section::before {
             content: '';
             position: absolute;
             top: 0;
+            right: 0;
+            bottom: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6); /* Dark overlay remains */
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
         }
 
         .hero-section .container {
             position: relative;
-            z-index: 1;
+            z-index: 2;
+        }
+
+        .military-badge {
+            display: inline-block;
+            background-color: var(--military-gold);
+            color: var(--military-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .va-benefits-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 2rem;
+            height: 100%;
+            box-shadow: 0 4px 6px rgba(var(--shadow-color-rgb), 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .expertise-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 2rem;
+            height: 100%;
+            box-shadow: 0 4px 6px rgba(var(--shadow-color-rgb), 0.1);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .expertise-card h3 {
+            color: var(--military-blue);
+            margin-bottom: 1rem;
+        }
+
+        .expertise-card ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .expertise-card ul li:last-child {
+            border-bottom: none;
         }
 
         .gold-text {
@@ -477,8 +528,17 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7 mb-5 mb-lg-0">
-                    <h1 class="display-4 fw-bold mb-4">Buying in Hawaii is as <span class="gold-text">Unique</span> as the Islands Themselves</h1>
-                    <h2 class="h3 mb-4">Our Expert Guidance Navigates the Complexities of:</h2>
+                    <div class="military-badge mb-4">
+                        <i class="fas fa-star me-2"></i>Military Relocation Professional (MRP)
+                    </div>
+                    <h1 class="display-4 fw-bold mb-4">Your Military Housing Expert in <span class="gold-text">Hawaii</span></h1>
+                    <h2 class="h3 mb-4">Specialized Support for:</h2>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>VA Loan Expertise</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>BAH Maximization</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>PCS Relocation</li>
+                        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Off-Base Housing</li>
+                    </ul>
                     
                     <div class="row mt-4">
                         <div class="col-md-6 mb-3">
@@ -528,26 +588,26 @@
                 
                 <div class="col-lg-5">
                     <div class="cta-form">
-                        <h3 class="text-center mb-4">Speak With A Hawaii Buyers Agent Today</h3>
-                        <form id="contact-form">
+                        <h3 class="text-center mb-4">Connect with a Military Relocation Specialist</h3>
+                        <form id="mrp-contact-form">
                             <div class="mb-3">
                                 <input type="text" class="form-control" placeholder="Your Name" required>
                             </div>
                             <div class="mb-3">
-                                <input type="email" class="form-control" placeholder="Your Email" required>
+                                <input type="email" class="form-control" placeholder="Email Address" required>
                             </div>
                             <div class="mb-3">
-                                <input type="tel" class="form-control" placeholder="Your Phone" required>
+                                <input type="tel" class="form-control" placeholder="Phone Number">
                             </div>
                             <div class="mb-3">
                                 <select class="form-select" required>
-                                    <option value="" selected disabled>I'm Interested In Buying...</option>
-                                    <option value="primary">Primary Residence</option>
-                                    <option value="luxury">Luxury Property</option>
-                                    <option value="investment">Investment Property</option>
-                                    <option value="vacation">Vacation Home</option>
-                                    <option value="leasehold">Leasehold Property</option>
-                                    <option value="land">Land/Development</option>
+                                    <option value="" selected disabled>Military Branch</option>
+                                    <option value="army">Army</option>
+                                    <option value="navy">Navy</option>
+                                    <option value="airforce">Air Force</option>
+                                    <option value="marines">Marines</option>
+                                    <option value="coastguard">Coast Guard</option>
+                                    <option value="veteran">Veteran</option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Connect With A Hawaii Buyers Agent</button>
@@ -564,7 +624,31 @@
 
     <section class="py-5">
         <div class="container">
-            <h2 class="text-center mb-5">Featured Properties <span class="gold-text">For Sale</span></h2>
+            <h2 class="text-center mb-5">VA Loan & Military <span class="gold-text">Benefits</span></h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="va-benefits-card">
+                        <h3 class="mb-4"><i class="fas fa-home me-2 text-primary"></i>VA Loan Advantages</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-3"><i class="fas fa-check me-2 text-success"></i>No down payment required</li>
+                            <li class="mb-3"><i class="fas fa-check me-2 text-success"></i>Competitive interest rates</li>
+                            <li class="mb-3"><i class="fas fa-check me-2 text-success"></i>No private mortgage insurance (PMI)</li>
+                            <li class="mb-3"><i class="fas fa-check me-2 text-success"></i>Flexible credit requirements</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="va-benefits-card">
+                        <h3 class="mb-4"><i class="fas fa-dollar-sign me-2 text-primary"></i>BAH Optimization</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-3"><i class="fas fa-check me-2 text-success"></i>Current BAH rate guidance</li>
+                            <li class="mb-3"><i class="fas fa-check me-2 text-success"></i>Maximum benefit utilization</li>
+                            <li class="mb-3"><i class="fas fa-check me-2 text-success"></i>Property matching to BAH</li>
+                            <li class="mb-3"><i class="fas fa-check me-2 text-success"></i>Investment opportunities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             
             <div class="row">
                 <div class="col-md-4 mb-4">
@@ -624,9 +708,42 @@
     
     <section class="py-5 bg-light-section">
         <div class="container">
-            <h2 class="text-center mb-5">Search by <span class="gold-text">Property Type</span></h2>
+            <h2 class="text-center mb-5">Military-Friendly <span class="gold-text">Neighborhoods</span></h2>
             
             <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="expertise-card">
+                        <h3>Schofield Barracks Area</h3>
+                        <p>Perfect for Army personnel, featuring family-friendly communities and easy base access.</p>
+                        <ul class="list-unstyled">
+                            <li>Wahiawa</li>
+                            <li>Mililani</li>
+                            <li>Wheeler Army Airfield</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="expertise-card">
+                        <h3>Pearl Harbor Area</h3>
+                        <p>Ideal for Navy and Air Force families, close to bases and amenities.</p>
+                        <ul class="list-unstyled">
+                            <li>Aiea</li>
+                            <li>Pearl City</li>
+                            <li>Ewa Beach</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="expertise-card">
+                        <h3>Kaneohe Marine Base</h3>
+                        <p>Perfect for Marine Corps families, featuring beautiful windward communities.</p>
+                        <ul class="list-unstyled">
+                            <li>Kaneohe</li>
+                            <li>Kailua</li>
+                            <li>Waimanalo</li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="col-md-4 mb-4">
                     <div class="property-type-card" data-bs-toggle="modal" data-bs-target="#propertyTypeModal" data-property-type="Vacation Condos">
                         <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Vacation Condos" class="property-type-img">
@@ -1046,6 +1163,20 @@
         });
 
         // Main contact form submission
+        document.getElementById('mrp-contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = {
+                name: form.querySelector('input[placeholder="Your Name"]').value,
+                email: form.querySelector('input[placeholder="Email Address"]').value,
+                phone: form.querySelector('input[placeholder="Phone Number"]').value,
+                militaryBranch: form.querySelector('select:first-of-type').value,
+                preferredLocation: form.querySelector('select:last-of-type').value
+            };
+            await submitForm(formData, 'mrp');
+        });
+
+        // Main contact form submission
         document.getElementById('contact-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const form = e.target;
@@ -1176,8 +1307,6 @@
                 } else {
                     alert('There was an error submitting the form. Please try again or contact us directly.');
                 }
-            } else {
-                form.reportValidity();
             }
         });
     </script>
