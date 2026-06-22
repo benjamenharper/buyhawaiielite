@@ -32,6 +32,44 @@ module.exports = async (req, res) => {
   try {
     const { name, email, phone, interest, propertyAddress, propertyPrice, message, formType } = req.body;
 
+    // ----- Spam filtering: return 200 silently so bots don't retry -----
+    const honeypot = (req.body.company_website || '').trim();
+    if (honeypot) {
+      console.log('Spam blocked: honeypot filled');
+      return res.status(200).json({ message: 'Form submitted successfully' });
+    }
+
+    const loadedAt = parseInt(req.body.loaded_at, 10) || 0;
+    if (loadedAt > 0 && (Date.now() - loadedAt) < 3000) {
+      console.log('Spam blocked: submitted too fast');
+      return res.status(200).json({ message: 'Form submitted successfully' });
+    }
+
+    // Valid email required
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRe.test(String(email).trim())) {
+      return res.status(400).json({ message: 'Invalid email' });
+    }
+
+    // Too many links in a contact message = spam
+    const msgStr = String(message || '');
+    const linkCount = (msgStr.match(/https?:\/\//gi) || []).length;
+    if (linkCount > 1) {
+      console.log('Spam blocked: too many links');
+      return res.status(200).json({ message: 'Form submitted successfully' });
+    }
+
+    // Keyword filter (tune to what you actually receive)
+    const spamWords = ['seo', 'backlink', 'crypto', 'casino', 'viagra',
+      'bitcoin', 'rank your', 'guest post', 'web design', 'increase traffic',
+      'digital marketing', 'lead generation services'];
+    const haystack = (msgStr + ' ' + (name || '')).toLowerCase();
+    if (spamWords.some(w => haystack.includes(w))) {
+      console.log('Spam blocked: keyword match');
+      return res.status(200).json({ message: 'Form submitted successfully' });
+    }
+    // ----- End spam filtering -----
+
     // Create email content based on form type and agent
     let subject = '';
     let text = '';
